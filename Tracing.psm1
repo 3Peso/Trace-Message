@@ -243,9 +243,9 @@ function Set-TraceMode {
     )
 
     if($useHighlighting -eq $true) {
-        $script:output = "WriteHost"
+        $global:output = "WriteHost"
     } else {
-        $script:output = "WriteOutput"
+        $global:output = "WriteOutput"
     }
 }
 
