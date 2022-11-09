@@ -205,3 +205,8 @@ $script:messageDecoration = @{
 }
 ...
 ```
+
+## Final thoughts
+
+I have written this little helper lib back in my earlier PowerShell days. There are things going on, I would not do so today. For example, using globals. *iieekss* 
+So, please take that in mind. As always, don`t use code from a third party, which you don`t understand. Big "surprises" will happen ;-)
