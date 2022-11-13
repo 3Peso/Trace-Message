@@ -8,7 +8,7 @@ Describe "Trace-Message" {
         $script:expectedMessage = "Trace-Message_Tests_#1"
         $script:expectedTag = "    [INFO"
         Context "No message type provided and no global output set" {
-            $global:output = $null
+            $global:traceMessageOutput = $null
 
             It "should call Get-FormattedMessage and Write-Output exactly once" {
                 Mock Get-FormattedMessage { }
@@ -20,12 +20,12 @@ Describe "Trace-Message" {
             }
 
             It "should use global output '$script:expectedOutput'" {
-                $expectedOutput = 'WriteOutput'
+                $traceMessageOutput = 'WriteOutput'
                 Mock Get-FormattedMessage { }
                 Mock Write-Output { }                
                 Trace-Message $expectedMessage
                 
-                $global:output | Should -BeExactly $expectedOutput
+                $global:traceMessageOutput | Should -BeExactly $traceMessageOutput
             }
 
             It "should call Get-FormattedMessage with expected message '$expectedMessage'" {
@@ -51,12 +51,12 @@ Describe "Trace-Message" {
             } -Skip
 
             It "should use global output '$expectedOutput'" {
-                $output = $expectedOutput                
+                $traceMessageOutput = $expectedOutput                
                 Mock Get-FormattedMessage { }
                 Mock Write-Output { }                
                 Trace-Message $expectedMessage -messageType $expectedMessageType
                 
-                $output | Should -BeExactly $expectedOutput
+                $traceMessageOutput | Should -BeExactly $expectedOutput
             }
 
             It "should call Get-FormattedMessage with expected message '$expectedMessage'" {
@@ -80,7 +80,7 @@ Describe "Trace-Message" {
         $script:expectedMessage = "Trace-Message_Tests_#3"
         Context "Message type '[MessageType]' provided and global output set to 'WriteOutput'" {
 
-            $global:output = 'WriteOutput'
+            $global:traceMessageOutput = 'WriteOutput'
 
             It "should call Get-FormattedMessage with expected tag" {
                 param(

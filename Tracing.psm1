@@ -72,12 +72,12 @@ function Trace-Message {
         $messageType = [MessageType]::Message
     }
 
-    if([string]::IsNullOrEmpty($global:output)) {
-        $global:output = "WriteOutput"    
+    if([string]::IsNullOrEmpty($global:traceMessageOutput)) {
+        $global:traceMessageOutput = "WriteOutput"    
     }
 
     if(-not $global:quietScript) {
-        Invoke-Command $($script:messageDecoration[$global:output][$messageType]) -ArgumentList $message
+        Invoke-Command $($script:messageDecoration[$global:traceMessageOutput][$messageType]) -ArgumentList $message
         #& $script:messageDecoration[$global:output][$messageType]
     }
 }
@@ -243,9 +243,9 @@ function Set-TraceMode {
     )
 
     if($useHighlighting -eq $true) {
-        $global:output = "WriteHost"
+        $global:traceMessageOutput = "WriteHost"
     } else {
-        $global:output = "WriteOutput"
+        $global:traceMessageOutput = "WriteOutput"
     }
 }
 
