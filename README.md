@@ -1,6 +1,6 @@
 # Trace-Message
 
-Simple tracing library for Windows PowerShell.
+Simple tracing library for PowerShell and Windows PowerShell.
 
 The idea was that I wanted to be able to put a function call inside a function which would create some sort of tracing mechanism when the function I wanted to trace
 started and when did it end. Also, the call hierachy should be visible.
