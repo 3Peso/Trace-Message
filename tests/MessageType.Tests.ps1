@@ -4,7 +4,7 @@ Describe "MessageType" {
     InModuleScope Tracing {
 
         It "should be initialized" {
-            [MessageType] | Should Not Be $null
+            [MessageType] | Should -Not -Be $null
         }
 
         It "should contain [Type]" -Test {
@@ -12,7 +12,7 @@ Describe "MessageType" {
 
             Write-Host "`tmessageType: $messageType"
 
-            $messageType | Should Not Be $null
+            $messageType | Should -Not -Be $null
         } -TestCases @( 
             @{ messageType=[MessageType]::Message }
             @{ messageType=[MessageType]::Warning }
@@ -30,6 +30,6 @@ Describe "MessageType" {
     }
 
     It "should contain 13 message types" {
-        [MessageType].GetEnumNames().Count | Should Be 13
+        [MessageType].GetEnumNames().Count | Should -Be 13
     }
 }
